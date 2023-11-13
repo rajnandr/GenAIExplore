@@ -1,0 +1,78 @@
+Question,SQL
+Which is the most popular game?,"select p.game_name, count(*)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+group by p.game_name
+order by count(*) desc
+limit 1;"
+What is the most popular genre?,"select g.type, count(*)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+join ""genre"" g on p.game_name = g.game_name
+group by g.type
+order by count(*) desc
+limit 1;"
+Which country generates the highest revenue?,"select c.country, count(*)
+from ""order"" o
+join ""customer"" c on o.customer_name = c.name
+group by c.country
+order by count(*) desc
+limit 1;"
+Which is the most profitable game?,"select g.name, sum(g.price)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+join ""game"" g on p.game_name = g.name
+group by g.name
+order by sum(g.price) desc
+limit 1;"
+What is the most selling platform?,"select p.name, count(*)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+group by p.name
+order by count(*) desc
+limit 1;"
+How many orders where place on pc?,"select count(*)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+where p.name = ""PC"";"
+How many orders where place on pc for battlefield?,"select count(*)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+where p.name = ""PC""
+and p.game_name = ""BATTLEFIELD"";"
+How many orders where place on pc for battlefield from India?,"select count(*)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+join ""customer"" c on o.customer_name = c.name
+where p.name = ""PC""
+and p.game_name = ""BATTLEFIELD""
+and c.country = ""INDIA"";"
+Which is the most popular game on pc?,"select p.game_name, count(*)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+where p.name = ""PC""
+group by p.game_name
+order by count(*) desc
+limit 1;"
+Which is the most popular game in India?,"select p.game_name, count(*)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+join ""customer"" c on o.customer_name = c.name
+where c.country = ""INDIA""
+group by p.game_name
+order by count(*) desc
+limit 1;"
+Which is the most popular platform in India?,"select p.name, count(*)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+join ""customer"" c on o.customer_name = c.name
+where c.country = ""INDIA""
+group by p.name
+order by count(*) desc
+limit 1;"
+Which is the most popular platform?,"select p.name, count(*)
+from ""order"" o
+join ""platform"" p on o.platform_id = p.id
+group by p.name
+order by count(*) desc
+limit 1;"
